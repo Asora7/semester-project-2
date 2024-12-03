@@ -21,7 +21,7 @@ export function getHeaders() {
   };
 
   // Check if there's a stored JWT token in local storage
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('my_token');
 
   // If token exists, include Authorization header with Bearer token
   if (token) {
