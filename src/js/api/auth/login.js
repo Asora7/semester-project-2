@@ -26,7 +26,7 @@ export async function loginUser(email, password) {
 
       localStorage.setItem('my_token', data.data.accessToken);
 
-      //window.location.href = '/index.html';  // Adjust this path if necessary
+      window.location.href = '/index.html';  // Adjust this path if necessary
     } else {
         throw new Error('Incorrect credentials. Please check your email and password.');
     }
