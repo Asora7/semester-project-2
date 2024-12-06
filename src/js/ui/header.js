@@ -16,7 +16,7 @@ export function createHeader() {
   
     const loginButton = document.createElement('button');
     loginButton.textContent = 'Login';
-    loginButton.onclick = () => window.location.href = '/login/index.html'; 
+    loginButton.onclick = () => window.location.href = 'auth/login/index.html'; 
   
     // Check if the user is logged in (using token in localStorage)
     const token = localStorage.getItem('my_token');
