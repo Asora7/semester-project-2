@@ -1,14 +1,17 @@
-import { defineConfig } from 'vite';
+import { resolve } from "path";
+import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: '', 
-
+  base: '/', // Make sure this is set to '/' to handle routing correctly
   build: {
-    outDir: 'dist', // Netlify uses this as the default deployment directory
-  },
-
-  server: {
-    // Serve the app as single-page application locally (optional for local testing)
-    historyApiFallback: true,
+    target: 'esnext',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, './index.html'),
+        login: resolve(__dirname, './auth/login/index.html'),
+        register: resolve(__dirname, './auth/register/index.html'),
+        // You can add more entry points here if needed
+      },
+    },
   },
 });

@@ -8,7 +8,7 @@ import "./js/ui/login.js";
 
 import "./js/ui/header.js";
 
-import "./js/router/index.js";
+import router from "./js/router/index.js";
 
 import { monitorUserActivity } from './js/ui/logout.js';
 
