@@ -27,7 +27,7 @@ export async function registerUser(name, email, password) {
     if (response.ok) {
 
       alert('Registration successful!');
-      window.location.href = '/auth/login/index.html';  
+      window.location.href = '/auth/login/';  
     } else {
 
       alert(`Error: ${data.message}`);

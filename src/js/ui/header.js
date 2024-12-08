@@ -4,7 +4,7 @@ export function createHeader() {
     const header = document.createElement('header');
     const homeButton = document.createElement('button');
     homeButton.textContent = 'Home';
-    homeButton.onclick = () => window.location.href = '/index.html'; 
+    homeButton.onclick = () => window.location.href = '/'; 
   
     const profileButton = document.createElement('button');
     profileButton.textContent = 'Profile';
@@ -16,7 +16,7 @@ export function createHeader() {
   
     const loginButton = document.createElement('button');
     loginButton.textContent = 'Login';
-    loginButton.onclick = () => window.location.href = 'auth/login/index.html'; 
+    loginButton.onclick = () => window.location.href = '/auth/login/'; 
   
     // Check if the user is logged in (using token in localStorage)
     const token = localStorage.getItem('my_token');

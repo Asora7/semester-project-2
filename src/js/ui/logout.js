@@ -10,7 +10,7 @@ function logout() {
       alert('You have been logged out successfully.');
   
       // Redirect to login page after logging out
-      window.location.href = '/auth/login/index.html';
+      window.location.href = '/auth/login/';
     }
   }
 

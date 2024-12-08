@@ -8,6 +8,8 @@ import "./js/ui/login.js";
 
 import "./js/ui/header.js";
 
+import "./js/router/index.js";
+
 import { monitorUserActivity } from './js/ui/logout.js';
 
 import { createHeader } from './js/ui/header.js';
@@ -17,3 +19,7 @@ window.onload = () => {
     monitorUserActivity(); // Start monitoring user inactivity
   };
 
+
+  document.addEventListener("DOMContentLoaded", () => {
+    router(); // This will handle routing based on the current URL
+  });
