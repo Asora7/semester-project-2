@@ -1,10 +1,14 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  // Set the base URL for GitHub Pages deployment
-  base: '/semester-project-2/',  // Replace with your GitHub repository name
+  base: '', 
 
   build: {
-    outDir: 'dist',  // Output directory for your build files
+    outDir: 'dist', // Netlify uses this as the default deployment directory
+  },
+
+  server: {
+    // Serve the app as single-page application locally (optional for local testing)
+    historyApiFallback: true,
   },
 });
