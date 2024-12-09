@@ -8,6 +8,12 @@ import "./js/ui/login.js";
 
 import "./js/ui/header.js";
 
+import "./js/api/profile/read.js";
+
+import "./js/api/profile/update.js";
+
+import "./js/ui/profile/profile.js";
+
 import router from "./js/router/index.js";
 
 import { monitorUserActivity } from './js/ui/logout.js';
