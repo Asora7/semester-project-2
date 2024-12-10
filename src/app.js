@@ -14,6 +14,10 @@ import "./js/api/profile/update.js";
 
 import "./js/ui/profile/profile.js";
 
+import "./js/ui/profile/createListing.js";
+
+import "./js/api/profile/createListing.js";
+
 import router from "./js/router/index.js";
 
 import { monitorUserActivity } from './js/ui/logout.js';
