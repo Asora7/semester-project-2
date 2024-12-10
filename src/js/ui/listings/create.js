@@ -1,4 +1,5 @@
-import { createListing } from "../../api/profile/createListing.js"; // Correct path to your API function
+import { createListing } from "../../api/listings/create.js";
+import { addListingToPage } from "./display.js"; // Import the function to add a listing to the page
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("create-listing-form").addEventListener("submit", async (event) => {
@@ -20,10 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const result = await createListing(listingData);
-      console.log("Listing created:", result);
+      console.log("Listing created:", result); // Log the result to check the structure
 
-      addListingToPage(result);
-
+      // Pass result.data to the addListingToPage function
+      addListingToPage(result.data); // Update the UI with the new listing
       document.getElementById("create-listing-form").reset();
       alert("Listing created successfully!");
     } catch (error) {
@@ -32,26 +33,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
-// Define the addListingToPage function
-function addListingToPage(listing) {
-  const listingsContainer = document.getElementById("listings");
-
-  const listingDiv = document.createElement("div");
-  listingDiv.className = "listing";
-
-  // Check if listing.media exists and is an array
-  const mediaUrl = listing.media && Array.isArray(listing.media) && listing.media.length > 0 
-    ? `<img src="${listing.media[0].url}" alt="${listing.title}" style="max-width: 100px;">` 
-    : "";
-
-  listingDiv.innerHTML = `
-    <h3>${listing.title}</h3>
-    <p>${listing.description}</p>
-    ${mediaUrl}
-    <p>Tags: ${listing.tags.join(", ")}</p>
-    <p>Ends At: ${new Date(listing.endsAt).toLocaleString()}</p>
-  `;
-
-  listingsContainer.appendChild(listingDiv);
-}

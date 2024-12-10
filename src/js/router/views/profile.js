@@ -6,4 +6,4 @@ const profilePage = () => {
 
 export default profilePage;
 
-import "../../ui/profile/createListing.js";
+import "../../ui/listings/create.js";
