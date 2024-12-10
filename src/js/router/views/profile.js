@@ -5,3 +5,5 @@ const profilePage = () => {
 };
 
 export default profilePage;
+
+import "../../ui/listings/create.js";

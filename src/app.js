@@ -14,6 +14,14 @@ import "./js/api/profile/update.js";
 
 import "./js/ui/profile/profile.js";
 
+import "./js/api/listings/listings.js";
+
+import "./js/ui/listings/create.js";
+
+import "./js/api/listings/create.js";
+
+import "./js/ui/listings/display.js";
+
 import router from "./js/router/index.js";
 
 import { monitorUserActivity } from './js/ui/logout.js';
