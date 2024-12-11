@@ -35,3 +35,5 @@ export function addListingToPage(listing) {
 
     listingsContainer.appendChild(listingDiv);
 }
+
+
