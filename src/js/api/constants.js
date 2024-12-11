@@ -12,6 +12,9 @@ export const API_CREATE_LISTING = `${API_BASE}/auction/listings`;
 
 export const API_GET_LISTINGS = (profileName) => `${API_BASE}/auction/profiles/${profileName}/listings`;
 
+export const API_ALL_LISTINGS = `${API_BASE}/auction/listings`; 
+
+
 
 
 //export const API_KEY_REGISTER = 'fbb48663-3755-419e-94b4-b4c641509086';
