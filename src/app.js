@@ -28,6 +28,9 @@ import { monitorUserActivity } from './js/ui/logout.js';
 
 import { createHeader } from './js/ui/header.js';
 
+import "./js/ui/listings/search.js";
+
+
 window.onload = () => {
     createHeader(); 
     monitorUserActivity(); // Start monitoring user inactivity

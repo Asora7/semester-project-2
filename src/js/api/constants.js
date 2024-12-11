@@ -14,6 +14,9 @@ export const API_GET_LISTINGS = (profileName) => `${API_BASE}/auction/profiles/$
 
 export const API_ALL_LISTINGS = `${API_BASE}/auction/listings`; 
 
+export const API_LISTINGS_SEARCH = `${API_BASE}/auction/listings/search`;
+
+
 
 
 
