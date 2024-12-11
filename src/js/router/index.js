@@ -12,16 +12,23 @@
  * @param {string} [pathname=window.location.pathname] - The URL pathname to determine 
  * which view to load. Defaults to the current window location.
  */
+
+import { renderHomePage } from './views/home.js';
+
 export default async function router(pathname = window.location.pathname) {
     switch (pathname) {
       case "/":
         await import("./views/home.js");
+        renderHomePage();
         break;
       case "/auth/login/":
         await import("./views/login.js");
         break;
       case "/auth/register/":
         await import("./views/register.js");
+        break;
+      case "/profile/":
+        await import("./views/profile.js");
         break;
       default:
         // Optionally, you could add a default case for a 404 page or redirect

@@ -26,7 +26,9 @@ export async function loginUser(email, password) {
 
       localStorage.setItem('my_token', data.data.accessToken);
 
-      window.location.href = '/';  // Adjust this path if necessary
+      localStorage.setItem('name', data.data.name);
+
+      window.location.href = '/';  
     } else {
         throw new Error('Incorrect credentials. Please check your email and password.');
     }
@@ -34,7 +36,5 @@ export async function loginUser(email, password) {
     throw new Error('An error occurred while logging in. Please try again.');
   }
 }
-
-localStorage.removeItem('token');  
-localStorage.removeItem('username');   
+  
 

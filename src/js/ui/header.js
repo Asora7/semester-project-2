@@ -8,7 +8,7 @@ export function createHeader() {
   
     const profileButton = document.createElement('button');
     profileButton.textContent = 'Profile';
-    profileButton.onclick = () => window.location.href = '/profile'; 
+    profileButton.onclick = () => window.location.href = '/profile/'; 
   
     const logoutButton = document.createElement('button');
     logoutButton.textContent = 'Logout';
