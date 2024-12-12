@@ -7,7 +7,7 @@ export function addListingToPage(listing) {
 
     if (!listingsContainer) {
         console.error("Listings container not found!");
-        return;a
+        return;
     }
 
     // Create a new listing div
@@ -29,6 +29,10 @@ export function addListingToPage(listing) {
         ? new Date(listing.endsAt).toLocaleString()
         : "Invalid Date";
 
+    // Calculate the highest bid
+    const bids = listing.bids || [];
+    const highestBid = bids.length > 0 ? Math.max(...bids.map(bid => bid.amount)) : 0;
+
     // Build the main listing HTML
     listingDiv.innerHTML = `
         <h3>${listing.title || "No title provided"}</h3>
@@ -36,6 +40,7 @@ export function addListingToPage(listing) {
         ${mediaUrl}
         <p><strong>Tags:</strong> ${tags}</p>
         <p><strong>Ends At:</strong> ${endsAt}</p>
+        <p><strong>Current Price:</strong> $${highestBid}</p> <!-- Display current bid -->
         <button class="view-details-btn">View Details</button>
         <div class="details hidden">
             <form class="bid-form">

@@ -11,7 +11,7 @@ export async function renderHomePage() {
 
     if (Array.isArray(listings)) {
       listings.forEach((listing) => {
-        addListingToPage(listing, listingsContainer);
+        addListingToPage(listing);  // Pass the listing directly
       });
     }
   } catch (error) {
