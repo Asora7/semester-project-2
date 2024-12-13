@@ -21,7 +21,7 @@ import { API_ALL_LISTINGS } from '../constants.js';
 
 export const getAllListings = async () => {
   try {
-    const response = await fetch(API_ALL_LISTINGS + '?_bids=true', {
+    const response = await fetch(`${API_ALL_LISTINGS}?_bids=true`, {
       method: 'GET',
       headers: {
         'X-Noroff-API-Key': API_KEY, // Use your API key
