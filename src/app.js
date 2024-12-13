@@ -30,7 +30,6 @@ import { createHeader } from './js/ui/header.js';
 
 import "./js/ui/listings/search.js";
 
-import { renderHomePage } from "./js/router/views/home.js";
 
 
 window.onload = () => {
@@ -41,9 +40,4 @@ window.onload = () => {
 
   document.addEventListener("DOMContentLoaded", () => {
     router(); // This will handle routing based on the current URL
-
-    if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
-        renderHomePage(); // Render the homepage listings
-      }
-      
   });

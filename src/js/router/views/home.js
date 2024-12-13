@@ -3,34 +3,33 @@ import { addListingToPage } from '../../ui/listings/display.js';
 
 export async function renderHomePage() {
     try {
-      const response = await getAllListings();
-      console.log(response);
+        const response = await getAllListings(); 
+        const listings = Array.isArray(response.data) ? response.data : [];
+        
+        console.log('Listings:', listings);
   
-      // Ensure that response.data is an array
-      const listings = Array.isArray(response.data) ? response.data : [];
-      console.log('Listings:', listings); // Debugging line
+        const listingsContainer = document.getElementById("listings-container");
+        listingsContainer.innerHTML = ""; 
   
-      const listingsContainer = document.getElementById("listings-container");
-      listingsContainer.innerHTML = ""; // Clear existing listings
-  
-      listings.forEach((listing) => {
-        addListingToPage(listing);  // Pass the listing directly
-      });
+        listings.forEach((listing) => {
+            addListingToPage(listing);  
+        });
     } catch (error) {
-      console.error("Error fetching listings:", error);
-      alert("Failed to load listings.");
+        console.error("Error fetching listings:", error);
+        alert("Failed to load listings.");
     }
-  }
+}
+
   
 
-document.addEventListener("DOMContentLoaded", async () => {
+  document.addEventListener("DOMContentLoaded", async () => {
     try {
-      const allListings = await getAllListings();  // Fetch all posts
-      updateHomepageListings(allListings);  // Function to update homepage with listings
+        const allListings = await getAllListings(); // Fetch listings only once
+        updateHomepageListings(allListings); // Display listings on the page
     } catch (error) {
-      console.error("Error fetching listings:", error);
+        console.error("Error fetching listings:", error);
     }
-  });
+});
   
 // Homepage update function to dynamically display posts
 function updateHomepageListings(listings) {
@@ -38,7 +37,7 @@ function updateHomepageListings(listings) {
     
     if (!listingsContainer) {
         console.error('Listings container not found!');
-        return; // Stop execution if the container is not found
+        return;
     }
 
     listingsContainer.innerHTML = ""; // Clear the current listings
