@@ -19,17 +19,20 @@ export const getProfileListings = async (profileName) => {
 
 import { API_ALL_LISTINGS } from '../constants.js';
 
-export const getAllListings = async () => {
+export const getAllListings = async (page = 1, limit = 10, sort = "created", sortOrder = "desc") => {
   try {
-    const response = await fetch(API_ALL_LISTINGS, {
-      method: 'GET',
-      headers: {
-        'X-Noroff-API-Key': API_KEY, // Use your API key
-      },
-    });
+    const response = await fetch(
+      `${API_ALL_LISTINGS}?_bids=true&limit=${limit}&page=${page}&sort=${sort}&sortOrder=${sortOrder}`,
+      {
+        method: "GET",
+        headers: {
+          "X-Noroff-API-Key": API_KEY,
+        },
+      }
+    );
 
     if (!response.ok) {
-      throw new Error('Failed to fetch listings');
+      throw new Error("Failed to fetch listings");
     }
 
     return await response.json();

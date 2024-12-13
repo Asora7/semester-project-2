@@ -5,6 +5,8 @@ function logout() {
     if (confirmLogout) {
       // Remove token from localStorage
       localStorage.removeItem('my_token');
+      localStorage.removeItem('name');
+      localStorage.removeItem('user_balance');
   
       // Show an alert message for successful logout
       alert('You have been logged out successfully.');
