@@ -11,7 +11,6 @@ export function updateListingDisplay(listingId, updatedData) {
     // Update the current price
     const currentPriceElement = listingElement.querySelector(".current-price");
     if (currentPriceElement) {
-        // Ensure bids exists and is an array
         const highestBid = Array.isArray(updatedData.bids) && updatedData.bids.length > 0 
             ? Math.max(...updatedData.bids.map((bid) => bid.amount))
             : 0;
@@ -19,12 +18,11 @@ export function updateListingDisplay(listingId, updatedData) {
         currentPriceElement.textContent = `Current Price: $${highestBid}`;
     }
 
-    // Optionally, you can update other parts of the listing (e.g., bid history, tags)
+    // Optionally, update other parts of the listing (e.g., bid history, tags)
 }
 
 
-
-
+// Adds the listing to the top of the listings container
 export function addListingToPage(listing) {
     const listingsContainer = document.getElementById("listings");
 
@@ -88,5 +86,6 @@ export function addListingToPage(listing) {
         placeBid(listingId, bidAmount);
     });
 
-    listingsContainer.appendChild(listingDiv);
+    // Insert the listing at the top of the container
+    listingsContainer.insertBefore(listingDiv, listingsContainer.firstChild);
 }
