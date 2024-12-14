@@ -1,6 +1,6 @@
 import { getProfile } from "../../api/profile/read.js";
 import { updateProfile } from "../../api/profile/update.js";
-import { API_ALL_LISTINGS, API_PROFILES } from '../../api/constants.js'; 
+import { API_PROFILES } from '../../api/constants.js'; 
 import { getHeaders } from '../../api/headers.js'; 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -122,12 +122,6 @@ function displayBids(bids) {
       bidsContainer.appendChild(bidElement);
     });
 }
-
-
-
-  
-
-
 
   // Function to fetch all wins by profile
   async function fetchWinsByProfile(profileName) {
