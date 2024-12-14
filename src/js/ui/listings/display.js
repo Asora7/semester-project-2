@@ -40,15 +40,25 @@ export function addListingToPage(listing) {
       : "";
   
     const tags = listing.tags?.length ? listing.tags.join(", ") : "No tags";
-    const endsAt = listing.endsAt ? new Date(listing.endsAt).toLocaleString() : "Invalid Date";
+    const endsAtDate = listing.endsAt ? new Date(listing.endsAt) : null;
+    const endsAt = endsAtDate ? endsAtDate.toLocaleString() : "Invalid Date";
     const bids = listing.bids || [];
   
     const highestBid = bids.length > 0 ? Math.max(...bids.map((bid) => bid.amount)) : 0;
+  
+    // Determine if the listing is active
+    const now = new Date();
+    const isActive = endsAtDate && endsAtDate > now;
   
     // Build the bids list HTML
     const bidsList = bids
       .map((bid) => `<li>Amount: $${bid.amount}, By User ID: ${bid.userId || "Unknown"}</li>`)
       .join("");
+  
+    // Add a "Not Active" badge if the listing is expired
+    const statusBadge = isActive
+      ? `<span class="badge badge-active">Active</span>`
+      : `<span class="badge badge-expired">Not Active</span>`;
   
     listingDiv.innerHTML = `
       <h3>${listing.title || "No title provided"}</h3>
@@ -57,10 +67,11 @@ export function addListingToPage(listing) {
       <p><strong>Tags:</strong> ${tags}</p>
       <p><strong>Ends At:</strong> ${endsAt}</p>
       <p><strong class="current-price">Current Price:</strong> $${highestBid}</p>
+      ${statusBadge}
       <ul><strong>All Bids:</strong>${bidsList || "<li>No bids yet</li>"}</ul>
-      <button class="view-details-btn">View Details</button>
+      <button class="view-details-btn" ${!isActive ? "disabled" : ""}>View Details</button>
       <div class="details hidden">
-          <form class="bid-form">
+          <form class="bid-form" ${!isActive ? "style='display:none;'" : ""}>
               <label for="bid-amount-${listing.id}">Bid Amount:</label>
               <input type="number" id="bid-amount-${listing.id}" name="bidAmount" min="1" required>
               <input type="hidden" value="${listing.id}" id="listing-id-${listing.id}">
@@ -77,23 +88,26 @@ export function addListingToPage(listing) {
     });
   
     const bidForm = listingDiv.querySelector(".bid-form");
-    bidForm.addEventListener("submit", (event) => {
-      event.preventDefault();
+    if (bidForm) {
+      bidForm.addEventListener("submit", (event) => {
+        event.preventDefault();
   
-      const bidAmount = parseFloat(
-        bidForm.querySelector(`#bid-amount-${listing.id}`).value
-      );
-      const listingId = bidForm.querySelector(`#listing-id-${listing.id}`).value;
+        const bidAmount = parseFloat(
+          bidForm.querySelector(`#bid-amount-${listing.id}`).value
+        );
+        const listingId = bidForm.querySelector(`#listing-id-${listing.id}`).value;
   
-      if (isNaN(bidAmount) || bidAmount <= 0) {
-        alert("Please enter a valid bid amount.");
-        return;
-      }
+        if (isNaN(bidAmount) || bidAmount <= 0) {
+          alert("Please enter a valid bid amount.");
+          return;
+        }
   
-      placeBid(listingId, bidAmount);
-    });
+        placeBid(listingId, bidAmount);
+      });
+    }
   
     // Insert the listing at the top of the container
     listingsContainer.insertBefore(listingDiv, listingsContainer.firstChild);
   }
+  
   

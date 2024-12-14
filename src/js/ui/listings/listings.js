@@ -12,3 +12,5 @@ document.getElementById('listings').addEventListener('click', event => {
         event.target.textContent = details.classList.contains('hidden') ? 'View Details' : 'Hide Details';
     }
 });
+
+
