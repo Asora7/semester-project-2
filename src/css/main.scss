@@ -1,0 +1,13 @@
+// Import Bootstrap SCSS
+@import "bootstrap/scss/bootstrap";
+
+
+// Import custom styles
+@import "./register.scss";
+@import "./login.scss";
+@import "./profile.scss";
+@import "./home.scss";
+@import "./header.scss";
+@import "./footer.scss";
+@import "./global.scss";
+
