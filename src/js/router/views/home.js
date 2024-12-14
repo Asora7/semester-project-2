@@ -130,12 +130,14 @@ function updateListings() {
         const end = start + listingsPerPage;
         const currentListings = allListings.slice(start, end);
   
-        // Display the listings
-        const listingsContainer = document.getElementById("listings");
-        listingsContainer.innerHTML = currentListings.map(listing => `<div>${listing}</div>`).join("");
+        // Display the listings using updateHomepageListings
+        updateHomepageListings(currentListings);
   
         // Update pagination controls
-        updatePaginationControls(totalPages);
+        updatePaginationControls({
+          currentPage,
+          totalPages
+        });
       })
       .catch(error => {
         console.error("Error fetching listings:", error);
@@ -143,33 +145,47 @@ function updateListings() {
   }
   
   
+  
 
-function updatePaginationControls(totalPages) {
-  const paginationContainer = document.getElementById("pagination-container");
-  paginationContainer.innerHTML = '';
-
-  if (currentPage > 1) {
-    paginationContainer.innerHTML += `<button id="prev-btn">Previous</button>`;
-  }
-
-  for (let i = 1; i <= totalPages; i++) {
-    paginationContainer.innerHTML += `<button class="page-btn">${i}</button>`;
-  }
-
-  if (currentPage < totalPages) {
-    paginationContainer.innerHTML += `<button id="next-btn">Next</button>`;
-  }
-
-  // Attach event listeners for the buttons
-  document.getElementById("prev-btn")?.addEventListener("click", () => { currentPage--; updateListings(); });
-  document.getElementById("next-btn")?.addEventListener("click", () => { currentPage++; updateListings(); });
-  const pageButtons = document.querySelectorAll(".page-btn");
-  pageButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      currentPage = parseInt(button.textContent);
-      updateListings();
+  function updatePaginationControls(pagination) {
+    const paginationContainer = document.getElementById("pagination-container");
+    paginationContainer.innerHTML = '';
+  
+    // Previous button
+    if (pagination.currentPage > 1) {
+      paginationContainer.innerHTML += `<button id="prev-btn">Previous</button>`;
+    }
+  
+    // Page buttons
+    for (let i = 1; i <= pagination.totalPages; i++) {
+      paginationContainer.innerHTML += `<button class="page-btn">${i}</button>`;
+    }
+  
+    // Next button
+    if (pagination.currentPage < pagination.totalPages) {
+      paginationContainer.innerHTML += `<button id="next-btn">Next</button>`;
+    }
+  
+    // Event listeners for pagination buttons
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+  
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => renderHomePage(pagination.currentPage - 1));
+    }
+  
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => renderHomePage(pagination.currentPage + 1));
+    }
+  
+    const pageButtons = document.querySelectorAll(".page-btn");
+    pageButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const pageNum = parseInt(button.textContent);
+        renderHomePage(pageNum);
+      });
     });
-  });
-}
+  }
+  
 
 updateListings(); // Initial call to display listings
