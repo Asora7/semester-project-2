@@ -47,8 +47,16 @@ function updatePaginationControls(pagination) {
   }
 
   // Event listeners for pagination buttons
-  document.getElementById("prev-btn")?.addEventListener("click", () => renderHomePage(pagination.currentPage - 1));
-  document.getElementById("next-btn")?.addEventListener("click", () => renderHomePage(pagination.currentPage + 1));
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => renderHomePage(pagination.currentPage - 1));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => renderHomePage(pagination.currentPage + 1));
+  }
 
   const pageButtons = document.querySelectorAll(".page-btn");
   pageButtons.forEach(button => {
@@ -61,7 +69,6 @@ function updatePaginationControls(pagination) {
 
 // Initial call to render the page
 document.addEventListener("DOMContentLoaded", () => renderHomePage(currentPage));
-
 
 // Homepage update function to dynamically display posts
 function updateHomepageListings(listings) {
@@ -112,80 +119,36 @@ function updateHomepageListings(listings) {
 }
 
 function updateListings() {
-    getAllListings() // Assuming this fetches the API response with `listings` and `pagination`
-      .then(response => {
-        console.log("API Response:", response);  // Log the full API response
-  
-        const allListings = response.listings;  // Access listings from the 'listings' property
-        if (!Array.isArray(allListings)) {
-          throw new Error("The 'listings' property is not an array");
-        }
-  
-        const totalListings = response.totalListings; // Now using the 'totalListings' property
-        const listingsPerPage = 10; // Adjust as necessary
-        const totalPages = Math.ceil(totalListings / listingsPerPage);
-  
-        // Pagination logic
-        const start = (currentPage - 1) * listingsPerPage;
-        const end = start + listingsPerPage;
-        const currentListings = allListings.slice(start, end);
-  
-        // Display the listings using updateHomepageListings
-        updateHomepageListings(currentListings);
-  
-        // Update pagination controls
-        updatePaginationControls({
-          currentPage,
-          totalPages
-        });
-      })
-      .catch(error => {
-        console.error("Error fetching listings:", error);
-      });
-  }
-  
-  
-  
+  getAllListings() // Assuming this fetches the API response with `listings` and `pagination`
+    .then(response => {
+      console.log("API Response:", response);  // Log the full API response
 
-  function updatePaginationControls(pagination) {
-    const paginationContainer = document.getElementById("pagination-container");
-    paginationContainer.innerHTML = '';
-  
-    // Previous button
-    if (pagination.currentPage > 1) {
-      paginationContainer.innerHTML += `<button id="prev-btn">Previous</button>`;
-    }
-  
-    // Page buttons
-    for (let i = 1; i <= pagination.totalPages; i++) {
-      paginationContainer.innerHTML += `<button class="page-btn">${i}</button>`;
-    }
-  
-    // Next button
-    if (pagination.currentPage < pagination.totalPages) {
-      paginationContainer.innerHTML += `<button id="next-btn">Next</button>`;
-    }
-  
-    // Event listeners for pagination buttons
-    const prevBtn = document.getElementById("prev-btn");
-    const nextBtn = document.getElementById("next-btn");
-  
-    if (prevBtn) {
-      prevBtn.addEventListener("click", () => renderHomePage(pagination.currentPage - 1));
-    }
-  
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => renderHomePage(pagination.currentPage + 1));
-    }
-  
-    const pageButtons = document.querySelectorAll(".page-btn");
-    pageButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const pageNum = parseInt(button.textContent);
-        renderHomePage(pageNum);
+      const allListings = response.listings;  // Access listings from the 'listings' property
+      if (!Array.isArray(allListings)) {
+        throw new Error("The 'listings' property is not an array");
+      }
+
+      const totalListings = response.totalListings; // Now using the 'totalListings' property
+      const listingsPerPage = 10; // Adjust as necessary
+      const totalPages = Math.ceil(totalListings / listingsPerPage);
+
+      // Pagination logic
+      const start = (currentPage - 1) * listingsPerPage;
+      const end = start + listingsPerPage;
+      const currentListings = allListings.slice(start, end);
+
+      // Display the listings using updateHomepageListings
+      updateHomepageListings(currentListings);
+
+      // Update pagination controls
+      updatePaginationControls({
+        currentPage,
+        totalPages
       });
+    })
+    .catch(error => {
+      console.error("Error fetching listings:", error);
     });
-  }
-  
+}
 
 updateListings(); // Initial call to display listings
