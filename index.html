@@ -5,20 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home page</title>
   <script type="module" src="/src/app.js"></script>
-  <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-  <h1>Welcome to the Auction House</h1>
-  <form id="search-form">
-    <input type="text" id="search-input" name="search" placeholder="Search listings" required>
-    <button type="submit">Search</button>
-  </form>
-  <div id="results"></div>
-  <section id="listings">
-    <!-- Listings will be dynamically inserted here -->
-  </section>
-  <div id="listings-container"></div>
-  <div id="bid-form-container" class="hidden"></div>
-  <p id="total-listings"></p>
+  <div class="container">
+    <h1 class="text-center my-4">Welcome to the Auction House</h1>
+    <form id="search-form" class="d-flex mb-4">
+      <input type="text" id="search-input" name="search" class="form-control me-2" placeholder="Search listings" required>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div id="results"></div>
+
+    <!-- Listings section, using Bootstrap's grid system -->
+    <section id="listings" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center mx-auto">
+      <!-- Listings will be dynamically inserted here -->
+    </section>
+
+    <div id="listings-container"></div>
+    <div id="bid-form-container" class="hidden"></div>
+    <p id="total-listings"></p>
+  </div>
 </body>
 </html>

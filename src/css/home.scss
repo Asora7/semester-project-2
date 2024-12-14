@@ -1,0 +1,76 @@
+@import './global.scss';
+@import './header.scss';
+
+// Listings container
+#listings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  // Placeholder for missing images
+  .placeholder-image {
+    height: 200px;
+    font-size: 1.5rem;
+  }
+  
+  // Listings
+  .listing {
+    transition: transform 0.3s ease;
+  }
+  
+  .listing:hover {
+    transform: scale(1.02);
+  }
+  
+  .details.hidden {
+    display: none;
+  }
+  
+  // Buttons
+  .view-details-btn {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .view-details-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .bid-form input {
+    margin-bottom: 10px;
+  }
+  
+
+  // Images in listings
+.listing img {
+    height: 200px; /* Set fixed height for consistency */
+    object-fit: cover; /* Ensure image fills the container proportionally */
+  }
+  
+  // Listing card container
+  .listing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure all listings are the same height */
+  }
+  
+  // Title and content alignment
+  .listing h3 {
+    min-height: 50px; /* Ensures all titles have consistent height */
+    text-align: center;
+  }
+  
+  // Status badge alignment
+  .listing .badge {
+    margin-bottom: 10px;
+  }
+  
+  // Buttons alignment
+  .view-details-btn {
+    margin-top: auto; /* Push button to the bottom */
+    width: 100%; /* Make buttons consistent in width */
+  }
+  
