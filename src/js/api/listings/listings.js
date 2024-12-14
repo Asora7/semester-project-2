@@ -19,6 +19,7 @@ export const getProfileListings = async (profileName) => {
 
 import { API_ALL_LISTINGS } from '../constants.js';
 
+
 export const getAllListings = async (limit = 10, page = 1) => {
   try {
     const response = await fetch(`${API_ALL_LISTINGS}?_bids=true&limit=${limit}&page=${page}&sort=created&sortOrder=desc`, {
@@ -32,9 +33,27 @@ export const getAllListings = async (limit = 10, page = 1) => {
       throw new Error('Failed to fetch listings');
     }
 
-    return await response.json();
+    const data = await response.json();
+    console.log('API Response:', data); // Log the full API response for debugging
+
+    if (!data || !Array.isArray(data.data)) {
+      console.error('No valid listings found in API response.');
+      return {
+        listings: [],
+        totalListings: 0,
+        totalPages: 0,
+        pagination: {},
+      };
+    }
+
+    return {
+      listings: data.data || [],
+      totalListings: data.meta?.totalListings || 0,
+      totalPages: data.meta?.totalPages || 0,
+      pagination: data.meta || {},
+    };
   } catch (error) {
-    console.error(error);
+    console.error('Error in getAllListings:', error);
     throw error;
   }
 };
