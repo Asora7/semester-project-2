@@ -54,11 +54,11 @@ After following these steps, the project will be available at `http://localhost:
 
 ## Known Issues
 
-- [x] **Pagination Issue:** Tried implementing pagination, but only the same 10 listings were shown on each page. As a result, I opted to display all listings at once to move on to the next feature.
-- [x] **Search and Bidding Issue:** Users are unable to place bids on listings when they are accessed via search results. Bidding works only on listings shown on the homepage. I wasn't able to resolve this issue before delivery due to time constraints.
-- [x]  **Gant Chart issue:**I lost my gant chartt i made early on because i forgot to save. i figured that out right before delivery, so i had not time to make it again unfortonally.
-- [x]  **Errors in console:** I have some errors in the console. I know its not good to have that when i deliver, but i did not have time to debug it. My project works as ecpected even with these errors so i choose to rather spend my last time on implementing last features.
-- [ ]  **Console logs:** I did not have time to remove console logs either, sorry. 
+- [x] **Pagination Issue:** Tried implementing pagination, but only the same 10 listings were shown on each page. As a result, I opted to display all listings at once, and just move on to the next feature since time is limited.
+- [x] **Search and Bidding Issue:**  Users cannot place bids on listings accessed via search results. Bidding works only on listings shown on the homepage. This issue was not resolved before delivery due to time constraints.
+- [x]  **Gant Chart issue:**  I lost the Gantt chart I created earlier because I forgot to save it. Unfortunately, I realized this right before delivery, so I did not have time to recreate it.
+- [x]  **Errors in console:** Some console errors are present. While it's not ideal to leave them unresolved, I chose to focus on feature implementation. The project works as expected despite these errors. I will atempt to resolve this after submission.
+- [ ]  **Console logs:** I didn't have time to remove console logs, so they are still present in the code.
 
 ## Future Improvements
 
@@ -70,7 +70,7 @@ With more time, I would focus on the following improvements:
 
 
 ## Thoughts
-This have been one of the hardest things I’ve done, and I know It aint flawless yet, but this is what I managed in this short time and with short experience. i suddently got some unexpected issues legitt right before delivery (like updating avatar worked all along and I did final test and I all of a sudden don’t work) so I just have to deliver what I got. I have done everything I can do at least, and im proud. I would like to get feed back how I can fix these issues after submission. 
+This project has been one of the most challenging tasks I've undertaken. While it's not flawless, it represents my best effort within the given timeframe and with my current level of experience. I encountered unexpected issues right before delivery (e.g., avatar update functionality worked until the final test but stopped working unexpectedly). I've done everything I could to address these problems, and I'm proud of the work I've submitted. I welcome any feedback on how I can fix these issues after submission.
 
 
 
