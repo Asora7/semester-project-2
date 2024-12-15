@@ -8,53 +8,57 @@ export function createHeader() {
   const logo = document.createElement('div');
   logo.classList.add('logo');
   logo.textContent = 'BIDSHARE';
-  
-  // Create the search bar
-  const searchBar = document.createElement('input');
-  searchBar.type = 'text';
-  searchBar.placeholder = 'Search...';
-  searchBar.classList.add('search-bar'); // For styling
 
   // Create the home button
-  const homeButton = document.createElement('a');  // Change button to link (anchor tag)
+  const homeButton = document.createElement('a');
   homeButton.textContent = 'Home';
-  homeButton.href = '/';  // Make it a link
-  homeButton.classList.add('nav-text'); // Apply nav-text class for styling
+  homeButton.href = '/';
+  homeButton.classList.add('nav-text');
 
-  // Create the login button
-  const loginButton = document.createElement('a');  // Change button to link (anchor tag)
-  loginButton.textContent = 'Login';
-  loginButton.href = '/auth/login/';  // Make it a link
-  loginButton.classList.add('nav-text'); // Apply nav-text class for styling
+  // Create the profile button
+  const profileButton = document.createElement('a');
+  profileButton.textContent = 'Profile';
+  profileButton.href = '/profile/';
+  profileButton.classList.add('nav-text');
 
+  // Create the logout button
   const logoutButton = document.createElement('button');
   logoutButton.textContent = 'Logout';
   logoutButton.classList.add('nav-button');
   logoutButton.onclick = logout;
-  
-  // Create the register button
-  const registerButton = document.createElement('a');  // Change button to link (anchor tag)
+
+  // Create the login and register buttons
+  const loginButton = document.createElement('a');
+  loginButton.textContent = 'Login';
+  loginButton.href = '/auth/login/';
+  loginButton.classList.add('nav-text');
+
+  const registerButton = document.createElement('a');
   registerButton.textContent = 'Register';
-  registerButton.href = '/auth/register/';  // Make it a link
-  registerButton.classList.add('nav-text'); // Apply nav-text class for styling
+  registerButton.href = '/auth/register/';
+  registerButton.classList.add('nav-text');
 
   // Check if the user is logged in (using token in localStorage)
   const token = localStorage.getItem('my_token');
 
+  // Create a nav container for all items
+  const navItems = document.createElement('div');
+  navItems.classList.add('nav-items');
+
+  // Append elements to the nav items container
+  navItems.appendChild(homeButton);
+
+  if (token) {
+    navItems.appendChild(profileButton);
+    navItems.appendChild(logoutButton);
+  } else {
+    navItems.appendChild(loginButton);
+    navItems.appendChild(registerButton);
+  }
+
   // Append elements to the header
   header.appendChild(logo);
-  header.appendChild(searchBar);
-
-  // For logged-in users, show profile and logout
-  if (token) {
-    header.appendChild(homeButton);
-    header.appendChild(logoutButton);
-  } else {
-    // For non-logged-in users, show login and register buttons
-    header.appendChild(homeButton);
-    header.appendChild(loginButton);
-    header.appendChild(registerButton);
-  }
+  header.appendChild(navItems);
 
   document.body.prepend(header); // Add the header to the top of the page
 }

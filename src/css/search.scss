@@ -1,0 +1,62 @@
+@import './global.scss';
+@import './header.scss';
+
+
+/* Search form container */
+#search-container {
+    margin-top: 100px;  /* Add margin to push it below the headers */
+    text-align: center; /* Center the form */
+  }
+  
+  #search-form {
+    display: flex;
+    justify-content: center; /* Center align the input and button */
+    width: 80%;  /* Adjust width of the search form */
+    margin: 0 auto; /* Center the form within the container */
+  }
+  
+  #search-input {
+    width: 70%; /* Adjust width for search input */
+    padding: 8px 12px; /* Adjust padding */
+    font-size: 16px; /* Smaller text */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #search-button {
+    padding: 6px 12px; /* Smaller padding for a more compact button */
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Smaller font size */
+    margin-left: 10px; /* Space between input and button */
+    width: auto; /* Let the button width auto-adjust based on content */
+  }
+  
+  #search-button:hover {
+    background-color: #333; /* Darker background on hover */
+  }
+  
+  #search-input:focus, #search-button:focus {
+    outline: none; /* Remove default focus outline */
+  }
+  
+  /* Optional: For better appearance on mobile */
+  @media (max-width: 768px) {
+    #search-form {
+      width: 90%;
+    }
+  
+    #search-input {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+  
+    #search-button {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+  }
+  

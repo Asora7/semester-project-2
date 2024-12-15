@@ -28,13 +28,13 @@ export function addListingToPage(listing) {
   }
 
   const listingDiv = document.createElement("div");
-  listingDiv.className = "col listing p-3 border rounded shadow-sm d-flex flex-column";
-  
-  // Generate the HTML with consistent layout
+  listingDiv.className = "col listing p-3 border rounded shadow-sm";
+  listingDiv.id = `listing-${listing.id}`;
+
   const mediaUrl = listing.media?.length
-    ? `<img src="${listing.media[0].url}" alt="${listing.title || "No title"}" class="img-fluid w-100 mb-3">`
-    : `<div class="placeholder-image bg-secondary d-flex align-items-center justify-content-center text-white mb-3">No Image</div>`;
-  
+    ? `<img src="${listing.media[0].url}" alt="${listing.title || "No title"}" class="img-fluid w-100 object-fit-cover mb-3">`
+    : `<div class="placeholder-image bg-secondary d-flex align-items-center justify-content-center text-white mb-3" style="height: 200px;">No Image</div>`;
+
   const tags = listing.tags?.length ? listing.tags.join(", ") : "No tags";
   const endsAtDate = listing.endsAt ? new Date(listing.endsAt) : null;
   const endsAt = endsAtDate ? endsAtDate.toLocaleString() : "Invalid Date";

@@ -35,7 +35,6 @@ import "/src/css/main.scss";
 import "bootstrap";
 
 
-
 window.onload = () => {
     createHeader(); 
     monitorUserActivity(); // Start monitoring user inactivity

@@ -43,11 +43,16 @@ export async function placeBid(listingId, bidAmount) {
 
         console.log("Bid placed successfully!", data);
 
+        // Assuming the API response contains the updated price:
+        const updatedPrice = data.updatedPrice || bidAmount;
+
         // Update the price of the listing with the new bid amount
         const listingDiv = document.getElementById(`listing-${listingId}`);
         if (listingDiv) {
+            // Get the current price element inside the listing
             const priceElement = listingDiv.querySelector(".current-price");
             if (priceElement) {
+                // Update the current price with the new bid amount
                 priceElement.textContent = `Current Price: $${bidAmount}`;
             }
         }

@@ -1,50 +1,58 @@
 @import './global.scss';
  /* Import global styles to use shared variables */
 
-// Header Styles
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #02011E;
-  padding: 10px 20px;
-}
-
-.logo {
-  color: white ;
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 30px;
-  text-transform: uppercase;
-}
-
-.search-bar {
-  padding: 5px 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: none;
-  background-color: #f1f1f1;
-}
-
-.nav-button {
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
-  font-family: 'Inclusive Sans', sans-serif;
-}
-
-.nav-text {
-    font-family:'Inclusive Sans', sans-serif; ;
+ .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #02011E;
+    padding: 20px 20px;
+  }
+  
+  .logo {
+    color: white;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 30px;
+    text-transform: uppercase;
+  }
+  
+  .nav-items {
+    display: flex;
+    align-items: center;
+    gap: 100px; /* Add more space between navigation elements */
+  }
+  
+  .nav-button {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Inclusive Sans', sans-serif;
+    background-color: transparent; /* Remove blue background on hover */
+    font-size: 20px; /* Match the font size of other nav items */
+  }
+  
+  .nav-button:hover {
+    text-decoration: underline;
+    background-color:#02011E ;
+  }
+  
+  .nav-text {
+    font-family: 'Inclusive Sans', sans-serif;
     font-size: 20px;
     font-weight: regular;
     letter-spacing: 0%;
     text-decoration: none;
-    color: white;  // Set text color to white
+    color: white;
   }
   
   .nav-text:hover {
-    text-decoration: underline; // Optional: Add hover effect for links
+    text-decoration: underline;
   }
-
+  
+  .nav-items > * {
+    margin-left: 0; /* Ensure no extra margin for individual items */
+  }
+  
+  
