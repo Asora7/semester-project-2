@@ -67,6 +67,9 @@ With more time, I would focus on the following improvements:
 - [ ] Fix pagination to display different listings on each page.
 - [ ] Resolve the issue where users cannot place bids on search results.
 - [ ] Enhance error handling and form validation for a smoother user experience.
+- [ ] Fix errors in console
+- [ ] remove unrelated console logs
+- [ ] Redo Gant Chart
 
 
 ## Thoughts
