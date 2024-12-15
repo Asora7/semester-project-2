@@ -56,6 +56,7 @@ After following these steps, the project will be available at `http://localhost:
 
 - [x] **Pagination Issue:** Tried implementing pagination, but only the same 10 listings were shown on each page. As a result, I opted to display all listings at once to move on to the next feature.
 - [x] **Search and Bidding Issue:** Users are unable to place bids on listings when they are accessed via search results. Bidding works only on listings shown on the homepage. I wasn't able to resolve this issue before delivery due to time constraints.
+- [x]  **Gant Chart issue:**I lost my gant chartt i made early on because i forgot to save. i figured that out right before delivery, so i had not time to make it again unfortonally. 
 
 ## Future Improvements
 
