@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         const listings = await searchListings(query);
-        displayListings(listings, listingsContainer);  // Display search results
+        displayListings(listings, listingsContainer);  
       } catch (error) {
         listingsContainer.innerHTML = "<p>Unable to fetch search results. Try again later.</p>";
       }
@@ -29,7 +29,7 @@ function displayListings(listings, listingsContainer) {
     return;
   }
 
-  listingsContainer.innerHTML = "";  // Clear previous search results
+  listingsContainer.innerHTML = "";  
 
   listings.forEach(listing => {
     const price = listing.price ? `$${listing.price}` : '';
@@ -81,7 +81,6 @@ function displayListings(listings, listingsContainer) {
 
     listingsContainer.innerHTML += listingHTML;
 
-    // Attach bid form event listeners
     const bidForms = document.querySelectorAll('.bid-form');
     bidForms.forEach(form => {
       form.addEventListener('submit', async (event) => {
@@ -91,20 +90,15 @@ function displayListings(listings, listingsContainer) {
 
         if (bidAmount && listingId) {
           try {
-            // Call API to place the bid
             await placeBid(listingId, bidAmount);
-
-            // Update the listing’s bid info in the DOM
             const listingCard = document.querySelector(`[data-listing-id="${listingId}"]`);
             const priceElement = listingCard.querySelector('.current-price');
             const bidsListElement = listingCard.querySelector('ul');
 
-            // Dynamically update the highest bid and bids list
             priceElement.textContent = `Current Price: $${bidAmount}`;
             const newBid = `<li>Amount: $${bidAmount}, By User ID: Unknown</li>`;
             bidsListElement.innerHTML += newBid;
             
-            // Optionally disable the bid button
             const bidButton = form.querySelector('button');
             bidButton.disabled = true;
             bidButton.textContent = "Bid Placed";

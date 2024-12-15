@@ -2,20 +2,17 @@
 @import './header.scss';
 
 .home-page {
-  // Listings container
 #listings {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-// Placeholder for missing images
 .placeholder-image {
   height: 200px;
   font-size: 1.5rem;
 }
 
-// Listings
 .listing {
   transition: transform 0.3s ease;
 }
@@ -28,7 +25,6 @@
   display: none;
 }
 
-// Buttons
 .view-details-btn {
   display: block;
   margin: 0 auto;
@@ -43,36 +39,30 @@
   margin-bottom: 10px;
 }
 
-
-// Images in listings
 .listing img {
-  height: 200px; /* Set fixed height for consistency */
-  object-fit: cover; /* Ensure image fills the container proportionally */
+  height: 200px; 
+  object-fit: cover; 
 }
 
-// Listing card container
 .listing {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%; /* Ensure all listings are the same height */
+  height: 100%; 
 }
 
-// Title and content alignment
 .listing h3 {
-  min-height: 50px; /* Ensures all titles have consistent height */
+  min-height: 50px;
   text-align: center;
 }
 
-// Status badge alignment
 .listing .badge {
   margin-bottom: 10px;
 }
 
-// Buttons alignment
 .view-details-btn {
-  margin-top: auto; /* Push button to the bottom */
-  width: 100%; /* Make buttons consistent in width */
+  margin-top: auto; 
+  width: 100%; 
 }
 
 .listing-card {
@@ -83,15 +73,15 @@
 }
 
 .listing-image {
-  width: 100%; /* Ensure the container takes the full width */
-  height: 200px; /* Set a fixed height for all images */
-  overflow: hidden; /* Hide any part of the image that overflows */
+  width: 100%;
+  height: 200px; 
+  overflow: hidden; 
 }
 
 .listing-image img {
-  width: 100%; /* Make the image take up the full width of the container */
-  height: 100%; /* Ensure the image takes up the full height of the container */
-  object-fit: cover; /* Maintain the aspect ratio while filling the space */
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
 }
 
 .listing-card h2 {

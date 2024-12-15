@@ -26,7 +26,6 @@ export async function registerUser(name, email, password) {
         const data = await response.json();
 
         if (response.ok) {
-            // Initialize credit score to 1000 for new users
             initializeCreditScore();
 
             alert('Registration successful!');

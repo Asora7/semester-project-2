@@ -48,7 +48,6 @@ export async function updateProfile(updatedData) {
     const result = await response.json();
     console.log('Profile updated:', result);
 
-    // Re-fetch the profile after the update and update the DOM
     getProfile();
 
   } catch (error) {

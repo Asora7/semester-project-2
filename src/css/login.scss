@@ -8,7 +8,7 @@
     align-items: center;
     background-color: white;
     width: 100%;
-    height: 100vh; /* Full height of the viewport */
+    height: 100vh; 
     padding: 20px;
   }
   
@@ -17,14 +17,14 @@
     font-family: 'Inter', sans-serif;
     font-size: 32px;
     margin-bottom: 20px;
-    text-align: center; /* This will center the title */
+    text-align: center; 
   }
   
   .login-form {
     background-color: #02011E;
     padding: 80px 50px;
     width: 100%;
-    max-width: 400px; /* Set a max width for the form */
+    max-width: 400px; 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
   
@@ -32,7 +32,7 @@
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     margin-bottom: 8px;
-    color: white; /* Text color to match the header */
+    color: white; 
   }
   
   .login-form input {

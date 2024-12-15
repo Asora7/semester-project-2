@@ -6,7 +6,7 @@ import { getHeaders } from '../../api/headers.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const profileName = localStorage.getItem('name');
-  getProfile(); // Fetch and display profile info
+  getProfile(); 
   
 
   fetchListingsByProfile(profileName);
@@ -28,45 +28,40 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     updateProfile(updatedData).then(() => {
-      getProfile(); // Re-fetch profile to show updated info
+      getProfile(); 
     });
 
     updateForm.reset(); 
   });
 });
 
-// Function to fetch all listings by profile
 async function fetchListingsByProfile(profileName) {
     try {
       const response = await fetch(`${API_PROFILES}/${profileName}/listings`, {
         method: 'GET',
-        headers: getHeaders(),  // Use getHeaders for authorization
+        headers: getHeaders(),  
       });
       const data = await response.json();
       console.log('Listings data:', data); 
-      
-      // Display listings
+
       displayListings(data.data);
     } catch (error) {
       console.error('Error fetching listings:', error);
     }
   }
   
-  // Function to display listings
   function displayListings(listings) {
     const listingsContainer = document.getElementById('listingsContainer');
-    listingsContainer.innerHTML = ''; // Clear any existing listings
+    listingsContainer.innerHTML = ''; 
   
     listings.forEach(listing => {
-      const isActive = new Date(listing.endsAt) > new Date(); // Check if listing is still active
+      const isActive = new Date(listing.endsAt) > new Date(); 
       const winningBid = listing.bids?.length
-        ? Math.max(...listing.bids.map(bid => bid.amount)) // Get the highest bid
+        ? Math.max(...listing.bids.map(bid => bid.amount)) 
         : 'No bids yet';
   
       const listingElement = document.createElement('div');
-      listingElement.classList.add('col-md-4'); // Bootstrap grid column for responsive layout
-  
-      // Dynamically set the media URL if available
+      listingElement.classList.add('col-md-4'); 
       let mediaUrl = '';
       if (listing.media && listing.media.url) {
         mediaUrl = `<img src="${listing.media.url}" alt="${listing.title}" class="listing-media" />`;
@@ -88,34 +83,27 @@ async function fetchListingsByProfile(profileName) {
   }
   
   
-  
-
-  
-  // Function to fetch all bids by profile
   async function fetchBidsByProfile(profileName) {
     try {
       const response = await fetch(`${API_PROFILES}/${profileName}/bids`, {
         method: 'GET',
-        headers: getHeaders(),  // Use getHeaders for authorization
+        headers: getHeaders(),  
       });
       const data = await response.json();
   
-      // Display bids
       displayBids(data.data);
     } catch (error) {
       console.error('Error fetching bids:', error);
     }
   }
 
-  
-// Modify displayBids to include listing details
 function displayBids(bids) {
   const bidsContainer = document.getElementById('bidsContainer');
   bidsContainer.innerHTML = '';
 
   bids.forEach(bid => {
       const bidElement = document.createElement('div');
-      bidElement.classList.add('col-md-4', 'mb-4'); // Bootstrap grid with margin-bottom
+      bidElement.classList.add('col-md-4', 'mb-4'); 
 
       bidElement.innerHTML = `
           <div class="card shadow-sm">
@@ -134,49 +122,6 @@ function displayBids(bids) {
 }
 
 
-  // Function to fetch all wins by profile
-  async function fetchWinsByProfile(profileName) {
-    try {
-      const response = await fetch(`${API_PROFILES}/${profileName}/wins`, {
-        method: 'GET',
-        headers: getHeaders(),  // Use getHeaders for authorization
-      });
-      const data = await response.json();
-  
-      // Display wins
-      displayWins(data.data);
-    } catch (error) {
-      console.error('Error fetching wins:', error);
-    }
-  }
-  
-  // Function to display wins
-  function displayWins(wins) {
-    const winsContainer = document.getElementById('winsContainer');
-    winsContainer.innerHTML = '';
-  
-    wins.forEach(win => {
-      const winElement = document.createElement('div');
-      winElement.classList.add('win');
-  
-      const title = document.createElement('h3');
-      title.textContent = win.title;
-      winElement.appendChild(title);
-  
-      const description = document.createElement('p');
-      description.textContent = win.description;
-      winElement.appendChild(description);
-  
-      const media = win.media.map(item => {
-        const img = document.createElement('img');
-        img.src = item.url;
-        img.alt = item.alt;
-        return img;
-      });
-  
-      media.forEach(img => winElement.appendChild(img));
-  
-      winsContainer.appendChild(winElement);
-    });
-  }
+
+
   

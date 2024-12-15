@@ -10,28 +10,20 @@
     <header class="text-dark text-center py-3">
       <h1>Profile</h1>
     </header>
-
     <main class="container mt-5">
-      <!-- Profile Information -->
-       <!-- Profile Information -->
-<section id="profile-info" class="row justify-content-center mt-5">
-  <div class="col-md-8 col-lg-6 d-flex align-items-center">
-    <!-- Avatar -->
-    <div class="col-4 text-center">
-      <img id="avatar" alt="User Avatar" class="rounded-circle profile-avatar" src="https://via.placeholder.com/150">
-    </div>
-    <!-- Profile Details -->
-    <div class="col-8 offset-1"> <!-- Add offset to move it more to the right -->
-      <h2 id="profile-name" class="profile-name">John Doe</h2>
-      <p id="profile-email" class="profile-email">john.doe@example.com</p>
-      <p><strong>Credits:</strong> <span id="profile-credits" class="profile-credits">100</span></p>
-      <p><strong>Bio:</strong> <span id="profile-bio" class="profile-bio">Lorem ipsum dolor sit amet.</span></p>
-    </div>
-  </div>
-</section>
-
-
-      <!-- Update Profile Form -->
+      <section id="profile-info" class="row justify-content-center mt-5">
+        <div class="col-md-8 col-lg-6 d-flex align-items-center">
+          <div class="col-4 text-center">
+            <img id="avatar" alt="User Avatar" class="rounded-circle profile-avatar" src="https://via.placeholder.com/150">
+          </div>
+          <div class="col-8">
+            <h2 id="profile-name" class="profile-name">John Doe</h2>
+            <p id="profile-email" class="profile-email">john.doe@example.com</p>
+            <p><strong>Credits:</strong> <span id="profile-credits" class="profile-credits">100</span></p>
+            <p><strong>Bio:</strong> <span id="profile-bio" class="profile-bio">Lorem ipsum dolor sit amet.</span></p>
+          </div>
+        </div>
+      </section>
       <section id="profile-update" class="mt-5">
         <h2>Update Profile</h2>
         <form id="update-profile-form" class="profile-update-form">
@@ -50,8 +42,6 @@
           <button type="submit" class="btn btn-primary">Update</button>
         </form>
       </section>
-
-      <!-- Create Listing -->
       <section id="create-listing" class="mt-5">
         <h2>Create Listing</h2>
         <form id="create-listing-form" class="listing-create-form">
@@ -75,27 +65,22 @@
             <label for="endsAt" class="form-label">Ends At</label>
             <input type="datetime-local" id="endsAt" name="endsAt" class="form-control" required>
           </div>
-          <button type="submit" class="btn btn-success">Create Listing</button>
+          <button type="submit" class="btn btn-success custom-margin">Create Listing</button>
         </form>
       </section>
-
-      <!-- Listings -->
       <section id="listings">
         <h2>My Listings</h2>
         <div id="listingsContainer" class="row"></div>
       </section>
-
-      <!-- Bids -->
       <section id="bids">
         <h2 class="my-4 text-center">My Bids</h2>
         <div id="bidsContainer" class="row"></div>
       </section>
-
-      <!-- Wins -->
-      <section id="wins">
-        <h2 class="my-4 text-center">My Wins</h2>
-        <div id="winsContainer" class="row"></div>
-      </section>
     </main>
   </body>
+  <footer class="text-white text-center py-5 mt-4" style="background-color: #02011E; padding-top: 40px;">
+    <div class="container">
+      <p class="mb-0">&copy; 2024 BidShare. All Rights Reserved.</p>
+    </div>
+  </footer>
 </html>

@@ -5,12 +5,10 @@ export async function searchListings(query) {
   try {
     const url = `${API_LISTINGS_SEARCH}?q=${encodeURIComponent(query)}`;
     
-    // Log the URL to ensure it's constructed correctly
     console.log('Request URL:', url);
     
     const response = await fetch(url, { headers: getHeaders() });
 
-    // Log the status of the response
     console.log('Response Status:', response.status);
     
     if (!response.ok) {
@@ -18,9 +16,9 @@ export async function searchListings(query) {
     }
 
     const data = await response.json();
-    console.log('Fetched Listings:', data.data);  // Ensure the correct data structure
+    console.log('Fetched Listings:', data.data);  
     
-    return data.data;  // Ensure you're returning the actual listings array here
+    return data.data;  
   } catch (error) {
     console.error("Failed to search listings:", error);
     throw error;

@@ -1,11 +1,11 @@
 import { API_GET_LISTINGS, API_KEY } from '../constants.js';
 
 export const getProfileListings = async (profileName) => {
-  const response = await fetch(API_GET_LISTINGS(profileName), {  // Use profileName here
+  const response = await fetch(API_GET_LISTINGS(profileName), { 
     method: 'GET',
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('my_token')}`, // JWT token
-      'X-Noroff-API-Key': API_KEY,  // Use the constant API_KEY from constants.js
+      'Authorization': `Bearer ${localStorage.getItem('my_token')}`, 
+      'X-Noroff-API-Key': API_KEY,  
     },
   });
 
@@ -14,7 +14,7 @@ export const getProfileListings = async (profileName) => {
   }
 
 
-  return await response.json(); // Assuming the API returns JSON
+  return await response.json(); 
 };
 
 
@@ -34,7 +34,7 @@ export const getAllListings = async () => {
     }
 
     const data = await response.json();
-    console.log('API Response:', data); // Log the full API response for debugging
+    console.log('API Response:', data); 
 
     if (!data || !Array.isArray(data.data)) {
       console.error('No valid listings found in API response.');

@@ -7,7 +7,6 @@ export function updateListingDisplay(listingId, updatedData) {
         console.error(`Listing element with ID listing-${listingId} not found.`);
         return;
     }
-    // Update the current price
     const currentPriceElement = listingElement.querySelector(".current-price");
     if (currentPriceElement) {
         const highestBid = Array.isArray(updatedData.bids) && updatedData.bids.length > 0 
@@ -16,16 +15,11 @@ export function updateListingDisplay(listingId, updatedData) {
 
         currentPriceElement.textContent = `Current Price: $${highestBid}`;
     }
-    // Optionally, update other parts of the listing (e.g., bid history, tags)
 }
 
-// Function to check if the user is logged in
 function isLoggedIn() {
-    // You can modify this function to check for your specific authentication logic (e.g., check for a token in localStorage)
     return !!localStorage.getItem("my_token");
 }
-
-// Adds the listing to the top of the listings container
 export function addListingToPage(listing) {
   const listingsContainer = document.getElementById("listings");
 
@@ -52,7 +46,6 @@ export function addListingToPage(listing) {
   const now = new Date();
   const isActive = endsAtDate && endsAtDate > now;
 
-  // Only show bids if the user is logged in
   const bidsList = isLoggedIn()
     ? bids.map((bid) => `<li>Amount: $${bid.amount}, By User ID: ${bid.userId || "Unknown"}</li>`).join("")
     : "<li>You must be logged in to view bids.</li>";
@@ -87,14 +80,14 @@ export function addListingToPage(listing) {
   const detailsDiv = listingDiv.querySelector(".details");
 
   viewDetailsBtn.addEventListener("click", () => {
-    // Hide other expanded listings
+
     document.querySelectorAll(".listing .details").forEach((otherDetails) => {
       if (otherDetails !== detailsDiv) {
         otherDetails.classList.add("hidden");
       }
     });
 
-    detailsDiv.classList.toggle("hidden"); // Toggle current listing's details
+    detailsDiv.classList.toggle("hidden"); 
     viewDetailsBtn.textContent = detailsDiv.classList.contains("hidden") ? "View Details" : "Hide Details";
   });
 
@@ -113,7 +106,7 @@ export function addListingToPage(listing) {
         return;
       }
 
-      placeBid(listingId, bidAmount); // Place the bid using the provided function
+      placeBid(listingId, bidAmount); 
     });
   }
 

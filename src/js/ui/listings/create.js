@@ -21,14 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const result = await createListing(listingData);
-      console.log("Listing created:", result); // Log the result to check the structure
+      console.log("Listing created:", result); 
 
-      // Get the container where the new listing should be inserted
       const createListingSection = document.getElementById("create-listing");
 
-      // Create a new element for the listing
       const newListing = document.createElement("div");
-      newListing.classList.add("listing"); // You can add a specific class for styling
+      newListing.classList.add("listing"); 
 
       newListing.innerHTML = `
         <h3>${result.data.title}</h3>
@@ -38,10 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <img src="${result.data.media[0]?.url}" alt="Listing Media" class="listing-media">
       `;
 
-      // Insert the new listing directly below the form
       createListingSection.appendChild(newListing);
 
-      // Optionally, reset the form
       document.getElementById("create-listing-form").reset();
       alert("Listing created successfully!");
     } catch (error) {
