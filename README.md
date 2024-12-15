@@ -29,9 +29,9 @@ Before you begin, make sure you have the following installed:
     git clone https://github.com/Asora7/semester-project-2.git
     ```
 
-2. **Navigate into the project folder:**
+2. **Navigate into the project directory:**
     ```bash
-    cd auction-website
+    cd semester-project-2
     ```
 
 3. **Install dependencies:**
@@ -83,5 +83,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 - [API Documentation](https://api.noroff.no)
 - [Swagger UI for API](https://api.noroff.no/swagger)
-- [Kanban board](https://trello.com/yourboard)
+- [Kanban board](https://github.com/users/Asora7/projects/3)
 - [Figma Design Prototype](https://www.figma.com/proto/cBoSJTCvK7jzYLa8CSdDw5/Untitled?page-id=1%3A4&node-id=10-2693&viewport=-537%2C318%2C0.25&t=riBC52qzxDjHhMnk-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=10%3A2659)
