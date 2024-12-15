@@ -68,6 +68,12 @@ With more time, I would focus on the following improvements:
 - [ ] Resolve the issue where users cannot place bids on search results.
 - [ ] Enhance error handling and form validation for a smoother user experience.
 
+
+## Thoughts
+This have been one of the hardest things I’ve done, and I know It aint flawless yet, but this is what I managed in this short time and with short experience. i suddently got some unexpected issues legitt right before delivery (like updating avatar worked all along and I did final test and I all of a sudden don’t work) so I just have to deliver what I got. I have done everything I can do at least, and im proud. I would like to get feed back how I can fix these issues after submission. 
+
+
+
 ## Demo
 
 You can view the live project here: [Live Demo Link](https://asora-auction-site.netlify.app)
