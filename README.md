@@ -81,7 +81,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ### Resources
 
-- [API Documentation](https://api.noroff.no)
-- [Swagger UI for API](https://api.noroff.no/swagger)
+- [API Documentation](https://docs.noroff.dev/docs/v2/auction-house/listings)
+- [Swagger UI for API](https://v2.api.noroff.dev/docs/static/index.html)
 - [Kanban board](https://github.com/users/Asora7/projects/3)
 - [Figma Design Prototype](https://www.figma.com/proto/cBoSJTCvK7jzYLa8CSdDw5/Untitled?page-id=1%3A4&node-id=10-2693&viewport=-537%2C318%2C0.25&t=riBC52qzxDjHhMnk-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=10%3A2659)
