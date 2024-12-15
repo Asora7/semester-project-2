@@ -1,0 +1,57 @@
+@import './global.scss';
+
+ .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #02011E;
+    padding: 20px 20px;
+  }
+  
+  .logo {
+    color: white;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 30px;
+    text-transform: uppercase;
+  }
+  
+  .nav-items {
+    display: flex;
+    align-items: center;
+    gap: 100px; 
+  }
+  
+  .nav-button {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Inclusive Sans', sans-serif;
+    background-color: transparent; 
+    font-size: 20px; 
+  }
+  
+  .nav-button:hover {
+    text-decoration: underline;
+    background-color:#02011E ;
+  }
+  
+  .nav-text {
+    font-family: 'Inclusive Sans', sans-serif;
+    font-size: 20px;
+    font-weight: regular;
+    letter-spacing: 0%;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .nav-text:hover {
+    text-decoration: underline;
+  }
+  
+  .nav-items > * {
+    margin-left: 0; 
+  }
+  
+  

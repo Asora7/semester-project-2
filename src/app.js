@@ -30,6 +30,9 @@ import { createHeader } from './js/ui/header.js';
 
 import "./js/ui/listings/search.js";
 
+import "/src/css/main.scss";
+
+import "bootstrap";
 
 
 window.onload = () => {

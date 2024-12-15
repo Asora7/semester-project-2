@@ -7,8 +7,6 @@ export function updateListingDisplay(listingId, updatedData) {
         console.error(`Listing element with ID listing-${listingId} not found.`);
         return;
     }
-
-    // Update the current price
     const currentPriceElement = listingElement.querySelector(".current-price");
     if (currentPriceElement) {
         const highestBid = Array.isArray(updatedData.bids) && updatedData.bids.length > 0 
@@ -17,97 +15,104 @@ export function updateListingDisplay(listingId, updatedData) {
 
         currentPriceElement.textContent = `Current Price: $${highestBid}`;
     }
+}
 
-    // Optionally, update other parts of the listing (e.g., bid history, tags)
+function isLoggedIn() {
+    return !!localStorage.getItem("my_token");
+}
+export function addListingToPage(listing) {
+  const listingsContainer = document.getElementById("listings");
+
+  if (!listingsContainer) {
+    console.error("Listings container not found!");
+    return;
+  }
+
+  const listingDiv = document.createElement("div");
+  listingDiv.className = "col listing p-3 border rounded shadow-sm";
+  listingDiv.id = `listing-${listing.id}`;
+
+  const mediaUrl = listing.media?.length
+    ? `<img src="${listing.media[0].url}" alt="${listing.title || "No title"}" class="img-fluid w-100 object-fit-cover mb-3">`
+    : `<div class="placeholder-image bg-secondary d-flex align-items-center justify-content-center text-white mb-3" style="height: 200px;">No Image</div>`;
+
+  const tags = listing.tags?.length ? listing.tags.join(", ") : "No tags";
+  const endsAtDate = listing.endsAt ? new Date(listing.endsAt) : null;
+  const endsAt = endsAtDate ? endsAtDate.toLocaleString() : "Invalid Date";
+  const bids = listing.bids || [];
+
+  const highestBid = bids.length > 0 ? Math.max(...bids.map((bid) => bid.amount)) : 0;
+
+  const now = new Date();
+  const isActive = endsAtDate && endsAtDate > now;
+
+  const bidsList = isLoggedIn()
+    ? bids.map((bid) => `<li>Amount: $${bid.amount}, By User ID: ${bid.userId || "Unknown"}</li>`).join("")
+    : "<li>You must be logged in to view bids.</li>";
+
+  const statusBadge = isActive
+    ? `<span class="badge bg-success">Active</span>`
+    : `<span class="badge bg-danger">Not Active</span>`;
+
+  listingDiv.innerHTML = `
+    ${mediaUrl}
+    <h3>${listing.title || "No title provided"}</h3>
+    <p><strong>Ends At:</strong> ${endsAt}</p>
+    <p><strong class="current-price">Current Price:</strong> $${highestBid}</p>
+    <p>${statusBadge}</p>
+    <div class="mt-auto text-center">
+      <button class="btn btn-primary view-details-btn" ${!isActive ? "disabled" : ""}>View Details</button>
+    </div>
+    <div class="details hidden">
+        <p>${listing.description || "No description provided"}</p>
+        <p><strong>Tags:</strong> ${tags}</p>
+        <ul><strong>All Bids:</strong>${bidsList || "<li>No bids yet</li>"}</ul>
+        <form class="bid-form" ${!isActive ? "style='display:none;'" : ""}>
+            <label for="bid-amount-${listing.id}">Bid Amount:</label>
+            <input type="number" id="bid-amount-${listing.id}" name="bidAmount" min="1" required class="form-control mb-2">
+            <input type="hidden" value="${listing.id}" id="listing-id-${listing.id}">
+            <button type="submit" class="btn btn-success">Place Bid</button>
+        </form>
+    </div>
+  `;
+
+  const viewDetailsBtn = listingDiv.querySelector(".view-details-btn");
+  const detailsDiv = listingDiv.querySelector(".details");
+
+  viewDetailsBtn.addEventListener("click", () => {
+
+    document.querySelectorAll(".listing .details").forEach((otherDetails) => {
+      if (otherDetails !== detailsDiv) {
+        otherDetails.classList.add("hidden");
+      }
+    });
+
+    detailsDiv.classList.toggle("hidden"); 
+    viewDetailsBtn.textContent = detailsDiv.classList.contains("hidden") ? "View Details" : "Hide Details";
+  });
+
+  const bidForm = listingDiv.querySelector(".bid-form");
+  if (bidForm) {
+    bidForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const bidAmount = parseFloat(
+        bidForm.querySelector(`#bid-amount-${listing.id}`).value
+      );
+      const listingId = bidForm.querySelector(`#listing-id-${listing.id}`).value;
+
+      if (isNaN(bidAmount) || bidAmount <= 0) {
+        alert("Please enter a valid bid amount.");
+        return;
+      }
+
+      placeBid(listingId, bidAmount); 
+    });
+  }
+
+  listingsContainer.appendChild(listingDiv);
 }
 
 
-// Adds the listing to the top of the listings container
-export function addListingToPage(listing) {
-    const listingsContainer = document.getElementById("listings");
-  
-    if (!listingsContainer) {
-      console.error("Listings container not found!");
-      return;
-    }
-  
-    const listingDiv = document.createElement("div");
-    listingDiv.className = "listing";
-    listingDiv.id = `listing-${listing.id}`;
-  
-    const mediaUrl = listing.media?.length
-      ? `<img src="${listing.media[0].url}" alt="${listing.title || "No title"}" class="listing-image">`
-      : "";
-  
-    const tags = listing.tags?.length ? listing.tags.join(", ") : "No tags";
-    const endsAtDate = listing.endsAt ? new Date(listing.endsAt) : null;
-    const endsAt = endsAtDate ? endsAtDate.toLocaleString() : "Invalid Date";
-    const bids = listing.bids || [];
-  
-    const highestBid = bids.length > 0 ? Math.max(...bids.map((bid) => bid.amount)) : 0;
-  
-    // Determine if the listing is active
-    const now = new Date();
-    const isActive = endsAtDate && endsAtDate > now;
-  
-    // Build the bids list HTML
-    const bidsList = bids
-      .map((bid) => `<li>Amount: $${bid.amount}, By User ID: ${bid.userId || "Unknown"}</li>`)
-      .join("");
-  
-    // Add a "Not Active" badge if the listing is expired
-    const statusBadge = isActive
-      ? `<span class="badge badge-active">Active</span>`
-      : `<span class="badge badge-expired">Not Active</span>`;
-  
-    listingDiv.innerHTML = `
-      <h3>${listing.title || "No title provided"}</h3>
-      <p>${listing.description || "No description provided"}</p>
-      ${mediaUrl}
-      <p><strong>Tags:</strong> ${tags}</p>
-      <p><strong>Ends At:</strong> ${endsAt}</p>
-      <p><strong class="current-price">Current Price:</strong> $${highestBid}</p>
-      ${statusBadge}
-      <ul><strong>All Bids:</strong>${bidsList || "<li>No bids yet</li>"}</ul>
-      <button class="view-details-btn" ${!isActive ? "disabled" : ""}>View Details</button>
-      <div class="details hidden">
-          <form class="bid-form" ${!isActive ? "style='display:none;'" : ""}>
-              <label for="bid-amount-${listing.id}">Bid Amount:</label>
-              <input type="number" id="bid-amount-${listing.id}" name="bidAmount" min="1" required>
-              <input type="hidden" value="${listing.id}" id="listing-id-${listing.id}">
-              <button type="submit">Place Bid</button>
-          </form>
-      </div>
-    `;
-  
-    const detailsDiv = listingDiv.querySelector(".details");
-    const viewDetailsBtn = listingDiv.querySelector(".view-details-btn");
-  
-    viewDetailsBtn.addEventListener("click", () => {
-      detailsDiv.classList.toggle("hidden");
-    });
-  
-    const bidForm = listingDiv.querySelector(".bid-form");
-    if (bidForm) {
-      bidForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-  
-        const bidAmount = parseFloat(
-          bidForm.querySelector(`#bid-amount-${listing.id}`).value
-        );
-        const listingId = bidForm.querySelector(`#listing-id-${listing.id}`).value;
-  
-        if (isNaN(bidAmount) || bidAmount <= 0) {
-          alert("Please enter a valid bid amount.");
-          return;
-        }
-  
-        placeBid(listingId, bidAmount);
-      });
-    }
-  
-    // Insert the listing at the top of the container
-    listingsContainer.insertBefore(listingDiv, listingsContainer.firstChild);
-  }
   
   

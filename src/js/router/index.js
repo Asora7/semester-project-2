@@ -31,7 +31,6 @@ export default async function router(pathname = window.location.pathname) {
         await import("./views/profile.js");
         break;
       default:
-        // Optionally, you could add a default case for a 404 page or redirect
         break;
     }
   }

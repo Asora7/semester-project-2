@@ -6,74 +6,81 @@
     <title>Profile</title>
     <script type="module" src="/src/app.js" defer></script>
   </head>
-  <body>
-    <header>
+  <body class="profile-page">
+    <header class="text-dark text-center py-3">
       <h1>Profile</h1>
     </header>
-    <main>
-      <section id="profile-info">
-        <!-- Add the banner image element here -->
-        <img id="banner" alt="User Banner" style="width: 100%; height: auto;">
-
-        <img id="avatar" alt="User Avatar">
-        <h2 id="profile-name"></h2>
-        <p id="profile-email"></p>
-        <p>Credits: <span id="profile-credits"></span></p>
-        <p>Bio: <span id="profile-bio"></span></p>
+    <main class="container mt-5">
+      <section id="profile-info" class="row justify-content-center mt-5">
+        <div class="col-md-8 col-lg-6 d-flex align-items-center">
+          <div class="col-4 text-center">
+            <img id="avatar" alt="User Avatar" class="rounded-circle profile-avatar" src="https://via.placeholder.com/150">
+          </div>
+          <div class="col-8">
+            <h2 id="profile-name" class="profile-name">John Doe</h2>
+            <p id="profile-email" class="profile-email">john.doe@example.com</p>
+            <p><strong>Credits:</strong> <span id="profile-credits" class="profile-credits">100</span></p>
+            <p><strong>Bio:</strong> <span id="profile-bio" class="profile-bio">Lorem ipsum dolor sit amet.</span></p>
+          </div>
+        </div>
       </section>
-      <section id="profile-update">
+      <section id="profile-update" class="mt-5">
         <h2>Update Profile</h2>
-        <form id="update-profile-form">
-          <label for="avatar-url">Avatar URL:</label>
-          <input type="url" id="avatar-url" name="avatarUrl" placeholder="Enter avatar URL">
-          <label for="bio">Bio:</label>
-          <textarea id="bio" name="bio" placeholder="Enter your bio"></textarea>
-          <label for="banner-url">Banner URL:</label>
-          <input type="url" id="banner-url" name="bannerUrl" placeholder="Enter banner URL">
-          <button type="submit">Update</button>
+        <form id="update-profile-form" class="profile-update-form">
+          <div class="mb-3">
+            <label for="avatar-url" class="form-label">Avatar URL</label>
+            <input type="url" id="avatar-url" name="avatarUrl" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="bio" class="form-label">Bio</label>
+            <textarea id="bio" name="bio" class="form-control"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="banner-url" class="form-label">Banner URL</label>
+            <input type="url" id="banner-url" name="bannerUrl" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
         </form>
       </section>
-      <section id="create-listing">
+      <section id="create-listing" class="mt-5">
         <h2>Create Listing</h2>
-        <form id="create-listing-form">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" required>
-      
-          <label for="description">Description</label>
-          <textarea id="description" name="description"></textarea>
-      
-          <label for="tags">Tags</label>
-          <input type="text" id="tags" name="tags">
-      
-          <label for="media">Media URL</label>
-          <input type="url" id="media" name="media">
-      
-          <label for="endsAt">Ends At</label>
-          <input type="datetime-local" id="endsAt" name="endsAt" required>
-      
-          <button type="submit">Create Listing</button>
+        <form id="create-listing-form" class="listing-create-form">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="description" class="form-control"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="tags" class="form-label">Tags</label>
+            <input type="text" id="tags" name="tags" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="media" class="form-label">Media URL</label>
+            <input type="url" id="media" name="media" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="endsAt" class="form-label">Ends At</label>
+            <input type="datetime-local" id="endsAt" name="endsAt" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-success custom-margin">Create Listing</button>
         </form>
       </section>
       <section id="listings">
-        <h2>Created Listings</h2>
-        <div id="listingsContainer">
-          <!-- Created listings will be added here -->
-        </div>
+        <h2>My Listings</h2>
+        <div id="listingsContainer" class="row"></div>
       </section>
-      
       <section id="bids">
-        <h2>Your Bids</h2>
-        <div id="bidsContainer">
-          <!-- Bids will be displayed here -->
-        </div>
+        <h2 class="my-4 text-center">My Bids</h2>
+        <div id="bidsContainer" class="row"></div>
       </section>
-      
-      <section id="wins">
-        <h2>Your Wins</h2>
-        <div id="winsContainer">
-          <!-- Wins will be displayed here -->
-        </div>
-      </section>        
     </main>
   </body>
+  <footer class="text-white text-center py-5 mt-4" style="background-color: #02011E; padding-top: 40px;">
+    <div class="container">
+      <p class="mb-0">&copy; 2024 BidShare. All Rights Reserved.</p>
+    </div>
+  </footer>
 </html>

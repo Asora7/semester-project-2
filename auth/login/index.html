@@ -3,29 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Semester project</title>
-    <script type="module" src="/src/js/ui/login.js"></script> <!-- Correct path for login.js -->
+    <title>Log in</title>
+    <script type="module" src="/src/js/ui/login.js"></script> 
     <script type="module" src="/src/app.js" defer></script>
   </head>
   <body>
-    <h1>Login</h1>
-    <form name="login" novalidate>
-      <div>
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
-        <div id="email-error" class="text-danger"></div>
-      </div>
+    <div class="login-container d-flex justify-content-center align-items-center">
+      <form name="login" novalidate class="login-form">
+        <h2 class="login-title">Log in</h2>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required />
+          <div id="email-error" class="text-danger"></div>
+        </div>
 
-      <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
-        <div id="password-error" class="text-danger"></div>
-      </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required />
+          <div id="password-error" class="text-danger"></div>
+        </div>
 
-      <a href="/auth/register/">Register</a>
-      <button type="submit">Login</button>
+        <p class="register-text">Don't have an account? <a href="/auth/register/" class="register-link">Register here</a></p>
 
-      <div id="login-error" style="color: red; margin-top: 10px;"></div> <!-- General error message -->
-    </form>
+        <button type="submit">Log in</button>
+
+        <div id="login-error" style="color: red; margin-top: 10px;"></div> 
+      </form>
+    </div>
   </body>
+  <footer class="text-white text-center py-5 mt-4" style="background-color: #02011E; padding-top: 40px;">
+    <div class="container">
+      <p class="mb-0">&copy; 2024 BidShare. All Rights Reserved.</p>
+    </div>
+  </footer>
 </html>

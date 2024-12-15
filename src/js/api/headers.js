@@ -17,13 +17,11 @@ import { API_KEY } from './constants.js';
 export function getHeaders() {
   const headers = {
     'Content-Type': 'application/json',  
-    'X-Noroff-API-Key': API_KEY,  // API key from constants.js
+    'X-Noroff-API-Key': API_KEY,  
   };
 
-  // Check if there's a stored JWT token in local storage
   const token = localStorage.getItem('my_token');
 
-  // If token exists, include Authorization header with Bearer token
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
   }

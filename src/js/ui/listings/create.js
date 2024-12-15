@@ -21,10 +21,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       const result = await createListing(listingData);
-      console.log("Listing created:", result); // Log the result to check the structure
+      console.log("Listing created:", result); 
 
-      // Pass result.data to the addListingToPage function
-      addListingToPage(result.data); // Update the UI with the new listing
+      const createListingSection = document.getElementById("create-listing");
+
+      const newListing = document.createElement("div");
+      newListing.classList.add("listing"); 
+
+      newListing.innerHTML = `
+        <h3>${result.data.title}</h3>
+        <p>${result.data.description}</p>
+        <p><strong>Tags:</strong> ${result.data.tags.join(", ")}</p>
+        <p><strong>Ends At:</strong> ${new Date(result.data.endsAt).toLocaleString()}</p>
+        <img src="${result.data.media[0]?.url}" alt="Listing Media" class="listing-media">
+      `;
+
+      createListingSection.appendChild(newListing);
+
       document.getElementById("create-listing-form").reset();
       alert("Listing created successfully!");
     } catch (error) {

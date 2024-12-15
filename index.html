@@ -5,20 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home page</title>
   <script type="module" src="/src/app.js"></script>
-  <link rel="stylesheet" href="src/css/style.css">
 </head>
-<body>
-  <h1>Welcome to the Auction House</h1>
-  <form id="search-form">
-    <input type="text" id="search-input" name="search" placeholder="Search listings" required>
-    <button type="submit">Search</button>
-  </form>
-  <div id="results"></div>
-  <section id="listings">
-    <!-- Listings will be dynamically inserted here -->
-  </section>
-  <div id="listings-container"></div>
-  <div id="bid-form-container" class="hidden"></div>
-  <p id="total-listings"></p>
+<body class="home-page">
+  <div class="container">
+    <h1 class="text-center my-4 title-home">Welcome to the BidShare</h1>
+    <div id="search-container">
+      <form id="search-form" class="d-flex mb-4">
+        <input type="text" id="search-input" name="search" class="form-control me-2" placeholder="Search listings" required>
+        <button type="submit" class="btn btn-primary" id="search-button">Search</button>
+      </form>
+    </div>
+    <div id="results"></div>
+    <section id="listings" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center mx-auto">
+    </section>
+
+    <div id="listings-container"></div>
+    <div id="bid-form-container" class="hidden"></div>
+    <div id="login-message" style="display: none; color: red; font-weight: bold;">
+      Please log in to place a bid.
+    </div>
+    <p id="total-listings"></p>
+  </div>
 </body>
+<footer class="text-white text-center py-5 mt-4" style="background-color: #02011E; padding-top: 40px;">
+  <div class="container">
+    <p class="mb-0">&copy; 2024 BidShare. All Rights Reserved.</p>
+  </div>
+</footer>
 </html>

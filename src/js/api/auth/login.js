@@ -1,5 +1,5 @@
-import { API_AUTH_LOGIN } from '../constants.js'; // Import your API constants
-import { getHeaders } from '../headers.js'; // Import header function
+import { API_AUTH_LOGIN } from '../constants.js';
+import { getHeaders } from '../headers.js'; 
 import { initializeCreditScore } from '../../ui/creditScore.js';
 
 /**
@@ -24,14 +24,12 @@ export async function loginUser(email, password) {
         const data = await response.json();
 
         if (response.ok) {
-            // Store the token and name in localStorage
             localStorage.setItem('my_token', data.data.accessToken);
             localStorage.setItem('name', data.data.name);
 
-            // Ensure credit score is initialized
-            initializeCreditScore(); // Initialize credit score to 1000 if not already set
+            initializeCreditScore(); 
 
-            window.location.href = '/'; // Redirect on successful login
+            window.location.href = '/'; 
         } else {
             throw new Error('Incorrect credentials. Please check your email and password.');
         }

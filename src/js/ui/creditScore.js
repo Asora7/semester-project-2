@@ -11,10 +11,10 @@ export function getCreditScore() {
  * @param {number} bidAmount - The amount to deduct from the credit score.
  */
 export function updateCreditScore(bidAmount) {
-    let currentScore = getCreditScore(); // Get the current balance from localStorage
+    let currentScore = getCreditScore(); 
     if (bidAmount <= currentScore) {
-        currentScore -= bidAmount; // Subtract the bid amount from the current balance
-        localStorage.setItem('user_balance', currentScore); // Update balance in localStorage
+        currentScore -= bidAmount; 
+        localStorage.setItem('user_balance', currentScore);
         console.log(`New credit score: ${currentScore}`);
     } else {
         console.error('Insufficient credit score for this bid.');
@@ -28,7 +28,6 @@ export function updateCreditScore(bidAmount) {
  */
 export function initializeCreditScore(defaultScore = 1000) {
     if (!localStorage.getItem('user_balance')) {
-        // Set balance to 1000 if not already set
         localStorage.setItem('user_balance', defaultScore);
         console.log(`Credit score initialized to: ${defaultScore}`);
     }
