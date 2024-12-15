@@ -6,7 +6,7 @@
   <title>Home page</title>
   <script type="module" src="/src/app.js"></script>
 </head>
-<body>
+<body class="home-page">
   <div class="container">
     <h1 class="text-center my-4 title-home">Welcome to the BidShare</h1>
     <div id="search-container">
@@ -25,6 +25,9 @@
 
     <div id="listings-container"></div>
     <div id="bid-form-container" class="hidden"></div>
+    <div id="login-message" style="display: none; color: red; font-weight: bold;">
+      Please log in to place a bid.
+    </div>
     <p id="total-listings"></p>
   </div>
 </body>

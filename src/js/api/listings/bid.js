@@ -8,8 +8,42 @@ import { getCreditScore, updateCreditScore } from '../../ui/creditScore.js';
 import { API_CREATE_LISTING } from '../constants.js';
 import { getHeaders } from '../headers.js';
 
-export async function placeBid(listingId, bidAmount) {
+/**
+ * Check if the user is logged in by looking for the JWT token in localStorage.
+ * @returns {boolean} - True if the user is logged in, false otherwise.
+ */
+function isLoggedIn() {
+    const token = localStorage.getItem('my_token');  // Or sessionStorage if preferred
+    return token !== null;
+}
+
+/**
+ * Check if the user is trying to bid on their own listing.
+ * @param {string} userId - The ID of the current user.
+ * @param {string} listingUserId - The ID of the user who created the listing.
+ * @returns {boolean} - True if the user is trying to bid on their own listing.
+ */
+function isOwnListing(userId, listingUserId) {
+    return userId === listingUserId;
+}
+
+export async function placeBid(listingId, bidAmount, listingUserId) {
     console.log(`Placing bid for listing ID: ${listingId} with amount: ${bidAmount}`);
+
+    // Check if the user is logged in
+    if (!isLoggedIn()) {
+        alert("Please log in to place a bid.");
+        return;
+    }
+
+    // Assuming we have the logged-in user's ID stored in localStorage
+    const currentUserId = localStorage.getItem('my_token');  // Replace with your logic to fetch the current user's ID
+
+    // Check if the user is trying to bid on their own listing
+    if (isOwnListing(currentUserId, listingUserId)) {
+        alert("You cannot place a bid on your own listing.");
+        return;
+    }
 
     try {
         const userBalance = getCreditScore();
@@ -39,7 +73,7 @@ export async function placeBid(listingId, bidAmount) {
 
         const updatedBalance = userBalance - bidAmount;
         updateCreditScore(updatedBalance);
-        alert(`Bid placed successfully. Your updated credit score is ${updatedBalance}.`);
+        alert(`Bid placed successfully. Your updated credit score is updated in profile`);
 
         console.log("Bid placed successfully!", data);
 

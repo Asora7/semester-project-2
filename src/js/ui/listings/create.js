@@ -23,8 +23,25 @@ document.addEventListener("DOMContentLoaded", function () {
       const result = await createListing(listingData);
       console.log("Listing created:", result); // Log the result to check the structure
 
-      // Pass result.data to the addListingToPage function
-      addListingToPage(result.data); // Update the UI with the new listing
+      // Get the container where the new listing should be inserted
+      const createListingSection = document.getElementById("create-listing");
+
+      // Create a new element for the listing
+      const newListing = document.createElement("div");
+      newListing.classList.add("listing"); // You can add a specific class for styling
+
+      newListing.innerHTML = `
+        <h3>${result.data.title}</h3>
+        <p>${result.data.description}</p>
+        <p><strong>Tags:</strong> ${result.data.tags.join(", ")}</p>
+        <p><strong>Ends At:</strong> ${new Date(result.data.endsAt).toLocaleString()}</p>
+        <img src="${result.data.media[0]?.url}" alt="Listing Media" class="listing-media">
+      `;
+
+      // Insert the new listing directly below the form
+      createListingSection.appendChild(newListing);
+
+      // Optionally, reset the form
       document.getElementById("create-listing-form").reset();
       alert("Listing created successfully!");
     } catch (error) {

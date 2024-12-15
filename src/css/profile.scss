@@ -1,0 +1,52 @@
+//@import './home.scss';
+@import './global.scss';
+
+/* Profile Avatar */
+.profile-avatar {
+    width: 300px; /* Adjust size */
+    height: 400px;
+    object-fit: cover;
+  }
+
+  #profile-info .col-8 {
+    padding-left: 100px; /* Add padding to the left to create space */
+  }
+  
+  /* Optionally adjust the profile text for better readability */
+  #profile-name {
+    margin-bottom: 10px; /* Adds space below the name */
+  }
+  #profile-email, #profile-credits, #profile-bio {
+    margin-bottom: 8px; /* Adds space between profile text items */
+  }
+  
+  /* Listing Card Styling */
+  .listing {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .listing img  {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
+  .listing h3 {
+    font-size: 1.25rem;
+    margin: 8px 0;
+  }
+  
+  .listing p {
+    color: #555;
+    font-size: 0.9rem;
+  }
+  

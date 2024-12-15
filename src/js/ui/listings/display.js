@@ -18,6 +18,13 @@ export function updateListingDisplay(listingId, updatedData) {
     }
     // Optionally, update other parts of the listing (e.g., bid history, tags)
 }
+
+// Function to check if the user is logged in
+function isLoggedIn() {
+    // You can modify this function to check for your specific authentication logic (e.g., check for a token in localStorage)
+    return !!localStorage.getItem("my_token");
+}
+
 // Adds the listing to the top of the listings container
 export function addListingToPage(listing) {
   const listingsContainer = document.getElementById("listings");
@@ -45,15 +52,16 @@ export function addListingToPage(listing) {
   const now = new Date();
   const isActive = endsAtDate && endsAtDate > now;
 
-  const bidsList = bids
-    .map((bid) => `<li>Amount: $${bid.amount}, By User ID: ${bid.userId || "Unknown"}</li>`)
-    .join("");
+  // Only show bids if the user is logged in
+  const bidsList = isLoggedIn()
+    ? bids.map((bid) => `<li>Amount: $${bid.amount}, By User ID: ${bid.userId || "Unknown"}</li>`).join("")
+    : "<li>You must be logged in to view bids.</li>";
 
   const statusBadge = isActive
     ? `<span class="badge bg-success">Active</span>`
     : `<span class="badge bg-danger">Not Active</span>`;
 
-    listingDiv.innerHTML = `
+  listingDiv.innerHTML = `
     ${mediaUrl}
     <h3>${listing.title || "No title provided"}</h3>
     <p><strong>Ends At:</strong> ${endsAt}</p>
@@ -111,6 +119,7 @@ export function addListingToPage(listing) {
 
   listingsContainer.appendChild(listingDiv);
 }
+
 
   
   
