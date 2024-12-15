@@ -58,6 +58,7 @@ After following these steps, the project will be available at `http://localhost:
 - [x] **Search and Bidding Issue:** Users are unable to place bids on listings when they are accessed via search results. Bidding works only on listings shown on the homepage. I wasn't able to resolve this issue before delivery due to time constraints.
 - [x]  **Gant Chart issue:**I lost my gant chartt i made early on because i forgot to save. i figured that out right before delivery, so i had not time to make it again unfortonally.
 - [x]  **Errors in console:** I have some errors in the console. I know its not good to have that when i deliver, but i did not have time to debug it. My project works as ecpected even with these errors so i choose to rather spend my last time on implementing last features.
+- [ ]  **Console logs:** I did not have time to remove console logs either, sorry. 
 
 ## Future Improvements
 
