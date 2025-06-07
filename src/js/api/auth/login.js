@@ -38,3 +38,8 @@ export async function loginUser(email, password) {
         alert('An error occurred while logging in. Please try again.');
     }
 }
+
+/** Return true if email is a valid stud.noroff.no address */
+export function isValidEmail(email) {
+    return /^[\w\-.]+@(stud\.)?noroff\.no$/.test(email);
+  }

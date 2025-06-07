@@ -113,3 +113,8 @@ export async function placeBid(listingId, bidAmount, listingUserId) {
     }).showToast();
   }
 }
+
+/** Return true if bidAmount is within balance */
+export function canPlaceBid(bidAmount, balance) {
+    return bidAmount <= balance;
+  }

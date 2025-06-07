@@ -5,15 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test": "vitest",
     "build": "vite build",
     "deploy": "gh-pages -d dist",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "gh-pages": "^6.2.0",
     "prettier": "^3.4.1",
     "sass-embedded": "^1.83.0",
-    "vite": "^6.0.3"
+    "vite": "^6.0.3",
+    "vitest": "^3.2.2"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
