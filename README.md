@@ -1,5 +1,9 @@
 # Auction Website Frontend
 
+## Demo
+
+You can view the live project here: [Live Demo Link](https://asora-auction-site.netlify.app)
+
 This is the frontend for an auction website where users can register, login, create listings, and place bids on items. It is a part of my semester project and integrates with the **Noroff Auction API**.
 
 ## Features
@@ -76,10 +80,6 @@ With more time, I would focus on the following improvements:
 This project has been one of the most challenging tasks I've undertaken. While it's not flawless, it represents my best effort within the given timeframe and with my current level of experience. I encountered unexpected issues right before delivery (e.g., avatar update functionality worked until the final test but stopped working unexpectedly). I've done everything I could to address these problems, and I'm proud of the work I've submitted. I welcome any feedback on how I can fix these issues after submission.
 
 
-
-## Demo
-
-You can view the live project here: [Live Demo Link](https://asora-auction-site.netlify.app)
 
 ## How to Contribute
 
